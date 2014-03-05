@@ -1,0 +1,745 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Promo2EventModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="Promo2EventModelStoreContainer">
+          <EntitySet Name="Afiliado" EntityType="Promo2EventModel.Store.Afiliado" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Categoria" EntityType="Promo2EventModel.Store.Categoria" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CategoriaAfiliado" EntityType="Promo2EventModel.Store.CategoriaAfiliado" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Ciudad" EntityType="Promo2EventModel.Store.Ciudad" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Estado" EntityType="Promo2EventModel.Store.Estado" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Evento" EntityType="Promo2EventModel.Store.Evento" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Pais" EntityType="Promo2EventModel.Store.Pais" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Puntuacion" EntityType="Promo2EventModel.Store.Puntuacion" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Afiliado_Ciudad" Association="Promo2EventModel.Store.FK_Afiliado_Ciudad">
+            <End Role="Ciudad" EntitySet="Ciudad" />
+            <End Role="Afiliado" EntitySet="Afiliado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Afiliado_Estado" Association="Promo2EventModel.Store.FK_Afiliado_Estado">
+            <End Role="Estado" EntitySet="Estado" />
+            <End Role="Afiliado" EntitySet="Afiliado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Afiliado_Pais" Association="Promo2EventModel.Store.FK_Afiliado_Pais">
+            <End Role="Pais" EntitySet="Pais" />
+            <End Role="Afiliado" EntitySet="Afiliado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ciudad_Estado" Association="Promo2EventModel.Store.FK_Ciudad_Estado">
+            <End Role="Estado" EntitySet="Estado" />
+            <End Role="Ciudad" EntitySet="Ciudad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ciudad_Pais" Association="Promo2EventModel.Store.FK_Ciudad_Pais">
+            <End Role="Pais" EntitySet="Pais" />
+            <End Role="Ciudad" EntitySet="Ciudad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Estado_Pais" Association="Promo2EventModel.Store.FK_Estado_Pais">
+            <End Role="Pais" EntitySet="Pais" />
+            <End Role="Estado" EntitySet="Estado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Evento_Afiliado" Association="Promo2EventModel.Store.FK_Evento_Afiliado">
+            <End Role="Afiliado" EntitySet="Afiliado" />
+            <End Role="Evento" EntitySet="Evento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Evento_Categoria" Association="Promo2EventModel.Store.FK_Evento_Categoria">
+            <End Role="Categoria" EntitySet="Categoria" />
+            <End Role="Evento" EntitySet="Evento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Evento_Ciudad" Association="Promo2EventModel.Store.FK_Evento_Ciudad">
+            <End Role="Ciudad" EntitySet="Ciudad" />
+            <End Role="Evento" EntitySet="Evento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Evento_Estado" Association="Promo2EventModel.Store.FK_Evento_Estado">
+            <End Role="Estado" EntitySet="Estado" />
+            <End Role="Evento" EntitySet="Evento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Evento_Pais" Association="Promo2EventModel.Store.FK_Evento_Pais">
+            <End Role="Pais" EntitySet="Pais" />
+            <End Role="Evento" EntitySet="Evento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Puntuacion_Evento" Association="Promo2EventModel.Store.FK_Puntuacion_Evento">
+            <End Role="Evento" EntitySet="Evento" />
+            <End Role="Puntuacion" EntitySet="Puntuacion" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Afiliado">
+          <Key>
+            <PropertyRef Name="idAfiliado" />
+          </Key>
+          <Property Name="idAfiliado" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="nombreAfiliado" Type="nchar" Nullable="false" MaxLength="100" />
+          <Property Name="direccionAfiliado" Type="nchar" Nullable="false" MaxLength="300" />
+          <Property Name="imgPathAfiliado" Type="nchar" MaxLength="300" />
+          <Property Name="emailAfiliado" Type="nchar" Nullable="false" MaxLength="150" />
+          <Property Name="passwordAfiliado" Type="nchar" Nullable="false" MaxLength="100" />
+          <Property Name="preguntaSeguridad" Type="nchar" MaxLength="200" />
+          <Property Name="respuestaSeguridad" Type="nchar" MaxLength="200" />
+          <Property Name="statusAfiliado" Type="bit" Nullable="false" />
+          <Property Name="fechaCreoAfiliado" Type="date" Nullable="false" />
+          <Property Name="fechaModiAfiliado" Type="date" Nullable="false" />
+          <Property Name="idPais" Type="int" Nullable="false" />
+          <Property Name="idCiudad" Type="int" Nullable="false" />
+          <Property Name="idEstado" Type="int" Nullable="false" />
+          <Property Name="raizVal" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Categoria">
+          <Key>
+            <PropertyRef Name="idCategoria" />
+          </Key>
+          <Property Name="idCategoria" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="nombreCategoria" Type="nchar" Nullable="false" MaxLength="100" />
+          <Property Name="imgPathCategoria" Type="nchar" MaxLength="300" />
+          <Property Name="statusCategoria" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CategoriaAfiliado">
+          <Key>
+            <PropertyRef Name="idCategoria" />
+            <PropertyRef Name="idAfiliado" />
+          </Key>
+          <Property Name="idCategoria" Type="int" Nullable="false" />
+          <Property Name="idAfiliado" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ciudad">
+          <Key>
+            <PropertyRef Name="idCiudad" />
+          </Key>
+          <Property Name="idCiudad" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="nombreCiudad" Type="nchar" Nullable="false" MaxLength="100" />
+          <Property Name="idPais" Type="int" Nullable="false" />
+          <Property Name="idEstado" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Estado">
+          <Key>
+            <PropertyRef Name="idEstado" />
+          </Key>
+          <Property Name="idEstado" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="nombreEstado" Type="nchar" Nullable="false" MaxLength="100" />
+          <Property Name="idPais" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Evento">
+          <Key>
+            <PropertyRef Name="idEvento" />
+          </Key>
+          <Property Name="idEvento" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="idAfiliado" Type="int" Nullable="false" />
+          <Property Name="nombreAfiliado" Type="nchar" Nullable="false" MaxLength="100" />
+          <Property Name="idCategoria" Type="int" Nullable="false" />
+          <Property Name="fechaInicio" Type="date" Nullable="false" />
+          <Property Name="fechaExpiracion" Type="date" Nullable="false" />
+          <Property Name="activo" Type="bit" Nullable="false" />
+          <Property Name="imgUrl" Type="nchar" MaxLength="300" />
+          <Property Name="direccion" Type="nchar" Nullable="false" MaxLength="500" />
+          <Property Name="descripcion" Type="nchar" Nullable="false" MaxLength="500" />
+          <Property Name="totalPuntaje" Type="decimal" Nullable="false" />
+          <Property Name="cantPuntuaciones" Type="int" Nullable="false" />
+          <Property Name="idCiudad" Type="int" Nullable="false" />
+          <Property Name="idEstado" Type="int" Nullable="false" />
+          <Property Name="idPais" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pais">
+          <Key>
+            <PropertyRef Name="idPais" />
+          </Key>
+          <Property Name="idPais" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="nombrePais" Type="nchar" Nullable="false" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Puntuacion">
+          <Key>
+            <PropertyRef Name="idPuntuacion" />
+          </Key>
+          <Property Name="idPuntuacion" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="valorPuntaje" Type="int" Nullable="false" />
+          <Property Name="fechaPuntaje" Type="date" Nullable="false" />
+          <Property Name="idEvento" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Afiliado_Ciudad">
+          <End Role="Ciudad" Type="Promo2EventModel.Store.Ciudad" Multiplicity="1" />
+          <End Role="Afiliado" Type="Promo2EventModel.Store.Afiliado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ciudad">
+              <PropertyRef Name="idCiudad" />
+            </Principal>
+            <Dependent Role="Afiliado">
+              <PropertyRef Name="idCiudad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Afiliado_Estado">
+          <End Role="Estado" Type="Promo2EventModel.Store.Estado" Multiplicity="1" />
+          <End Role="Afiliado" Type="Promo2EventModel.Store.Afiliado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estado">
+              <PropertyRef Name="idEstado" />
+            </Principal>
+            <Dependent Role="Afiliado">
+              <PropertyRef Name="idEstado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Afiliado_Pais">
+          <End Role="Pais" Type="Promo2EventModel.Store.Pais" Multiplicity="1" />
+          <End Role="Afiliado" Type="Promo2EventModel.Store.Afiliado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pais">
+              <PropertyRef Name="idPais" />
+            </Principal>
+            <Dependent Role="Afiliado">
+              <PropertyRef Name="idPais" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ciudad_Estado">
+          <End Role="Estado" Type="Promo2EventModel.Store.Estado" Multiplicity="1" />
+          <End Role="Ciudad" Type="Promo2EventModel.Store.Ciudad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estado">
+              <PropertyRef Name="idEstado" />
+            </Principal>
+            <Dependent Role="Ciudad">
+              <PropertyRef Name="idEstado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ciudad_Pais">
+          <End Role="Pais" Type="Promo2EventModel.Store.Pais" Multiplicity="1" />
+          <End Role="Ciudad" Type="Promo2EventModel.Store.Ciudad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pais">
+              <PropertyRef Name="idPais" />
+            </Principal>
+            <Dependent Role="Ciudad">
+              <PropertyRef Name="idPais" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Estado_Pais">
+          <End Role="Pais" Type="Promo2EventModel.Store.Pais" Multiplicity="1" />
+          <End Role="Estado" Type="Promo2EventModel.Store.Estado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pais">
+              <PropertyRef Name="idPais" />
+            </Principal>
+            <Dependent Role="Estado">
+              <PropertyRef Name="idPais" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Evento_Afiliado">
+          <End Role="Afiliado" Type="Promo2EventModel.Store.Afiliado" Multiplicity="1" />
+          <End Role="Evento" Type="Promo2EventModel.Store.Evento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Afiliado">
+              <PropertyRef Name="idAfiliado" />
+            </Principal>
+            <Dependent Role="Evento">
+              <PropertyRef Name="idAfiliado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Evento_Categoria">
+          <End Role="Categoria" Type="Promo2EventModel.Store.Categoria" Multiplicity="1" />
+          <End Role="Evento" Type="Promo2EventModel.Store.Evento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categoria">
+              <PropertyRef Name="idCategoria" />
+            </Principal>
+            <Dependent Role="Evento">
+              <PropertyRef Name="idCategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Evento_Ciudad">
+          <End Role="Ciudad" Type="Promo2EventModel.Store.Ciudad" Multiplicity="1" />
+          <End Role="Evento" Type="Promo2EventModel.Store.Evento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ciudad">
+              <PropertyRef Name="idCiudad" />
+            </Principal>
+            <Dependent Role="Evento">
+              <PropertyRef Name="idCiudad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Evento_Estado">
+          <End Role="Estado" Type="Promo2EventModel.Store.Estado" Multiplicity="1" />
+          <End Role="Evento" Type="Promo2EventModel.Store.Evento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estado">
+              <PropertyRef Name="idEstado" />
+            </Principal>
+            <Dependent Role="Evento">
+              <PropertyRef Name="idEstado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Evento_Pais">
+          <End Role="Pais" Type="Promo2EventModel.Store.Pais" Multiplicity="1" />
+          <End Role="Evento" Type="Promo2EventModel.Store.Evento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pais">
+              <PropertyRef Name="idPais" />
+            </Principal>
+            <Dependent Role="Evento">
+              <PropertyRef Name="idPais" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Puntuacion_Evento">
+          <End Role="Evento" Type="Promo2EventModel.Store.Evento" Multiplicity="1" />
+          <End Role="Puntuacion" Type="Promo2EventModel.Store.Puntuacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Evento">
+              <PropertyRef Name="idEvento" />
+            </Principal>
+            <Dependent Role="Puntuacion">
+              <PropertyRef Name="idEvento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Promo2EventModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="Promo2EventEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Afiliado" EntityType="Promo2EventModel.Afiliado" />
+          <EntitySet Name="Categoria" EntityType="Promo2EventModel.Categoria" />
+          <EntitySet Name="CategoriaAfiliado" EntityType="Promo2EventModel.CategoriaAfiliado" />
+          <EntitySet Name="Ciudad" EntityType="Promo2EventModel.Ciudad" />
+          <EntitySet Name="Estado" EntityType="Promo2EventModel.Estado" />
+          <EntitySet Name="Evento" EntityType="Promo2EventModel.Evento" />
+          <EntitySet Name="Pais" EntityType="Promo2EventModel.Pais" />
+          <EntitySet Name="Puntuacion" EntityType="Promo2EventModel.Puntuacion" />
+          <AssociationSet Name="FK_Afiliado_Estado" Association="Promo2EventModel.FK_Afiliado_Estado">
+            <End Role="Estado" EntitySet="Estado" />
+            <End Role="Afiliado" EntitySet="Afiliado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Afiliado_Pais" Association="Promo2EventModel.FK_Afiliado_Pais">
+            <End Role="Pais" EntitySet="Pais" />
+            <End Role="Afiliado" EntitySet="Afiliado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Evento_Afiliado" Association="Promo2EventModel.FK_Evento_Afiliado">
+            <End Role="Afiliado" EntitySet="Afiliado" />
+            <End Role="Evento" EntitySet="Evento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Evento_Categoria" Association="Promo2EventModel.FK_Evento_Categoria">
+            <End Role="Categoria" EntitySet="Categoria" />
+            <End Role="Evento" EntitySet="Evento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ciudad_Estado" Association="Promo2EventModel.FK_Ciudad_Estado">
+            <End Role="Estado" EntitySet="Estado" />
+            <End Role="Ciudad" EntitySet="Ciudad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ciudad_Pais" Association="Promo2EventModel.FK_Ciudad_Pais">
+            <End Role="Pais" EntitySet="Pais" />
+            <End Role="Ciudad" EntitySet="Ciudad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Evento_Ciudad" Association="Promo2EventModel.FK_Evento_Ciudad">
+            <End Role="Ciudad" EntitySet="Ciudad" />
+            <End Role="Evento" EntitySet="Evento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Estado_Pais" Association="Promo2EventModel.FK_Estado_Pais">
+            <End Role="Pais" EntitySet="Pais" />
+            <End Role="Estado" EntitySet="Estado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Evento_Estado" Association="Promo2EventModel.FK_Evento_Estado">
+            <End Role="Estado" EntitySet="Estado" />
+            <End Role="Evento" EntitySet="Evento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Evento_Pais" Association="Promo2EventModel.FK_Evento_Pais">
+            <End Role="Pais" EntitySet="Pais" />
+            <End Role="Evento" EntitySet="Evento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Puntuacion_Evento" Association="Promo2EventModel.FK_Puntuacion_Evento">
+            <End Role="Evento" EntitySet="Evento" />
+            <End Role="Puntuacion" EntitySet="Puntuacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Afiliado_Ciudad" Association="Promo2EventModel.FK_Afiliado_Ciudad">
+            <End Role="Ciudad" EntitySet="Ciudad" />
+            <End Role="Afiliado" EntitySet="Afiliado" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Afiliado">
+          <Key>
+            <PropertyRef Name="idAfiliado" />
+          </Key>
+          <Property Name="idAfiliado" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="nombreAfiliado" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="true" />
+          <Property Name="direccionAfiliado" Type="String" Nullable="false" MaxLength="300" Unicode="true" FixedLength="true" />
+          <Property Name="imgPathAfiliado" Type="String" MaxLength="300" Unicode="true" FixedLength="true" />
+          <Property Name="emailAfiliado" Type="String" Nullable="false" MaxLength="150" Unicode="true" FixedLength="true" />
+          <Property Name="passwordAfiliado" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="true" />
+          <Property Name="preguntaSeguridad" Type="String" MaxLength="200" Unicode="true" FixedLength="true" />
+          <Property Name="respuestaSeguridad" Type="String" MaxLength="200" Unicode="true" FixedLength="true" />
+          <Property Name="statusAfiliado" Type="Boolean" Nullable="false" />
+          <Property Name="fechaCreoAfiliado" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="fechaModiAfiliado" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="idPais" Type="Int32" Nullable="false" />
+          <Property Name="idCiudad" Type="Int32" Nullable="false" />
+          <Property Name="idEstado" Type="Int32" Nullable="false" />
+          <Property Name="raizVal" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Estado" Relationship="Promo2EventModel.FK_Afiliado_Estado" FromRole="Afiliado" ToRole="Estado" />
+          <NavigationProperty Name="Pais" Relationship="Promo2EventModel.FK_Afiliado_Pais" FromRole="Afiliado" ToRole="Pais" />
+          <NavigationProperty Name="Evento" Relationship="Promo2EventModel.FK_Evento_Afiliado" FromRole="Afiliado" ToRole="Evento" />
+          <NavigationProperty Name="Ciudad" Relationship="Promo2EventModel.FK_Afiliado_Ciudad" FromRole="Afiliado" ToRole="Ciudad" />
+        </EntityType>
+        <EntityType Name="Categoria">
+          <Key>
+            <PropertyRef Name="idCategoria" />
+          </Key>
+          <Property Name="idCategoria" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="nombreCategoria" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="true" />
+          <Property Name="imgPathCategoria" Type="String" MaxLength="300" Unicode="true" FixedLength="true" />
+          <Property Name="statusCategoria" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Evento" Relationship="Promo2EventModel.FK_Evento_Categoria" FromRole="Categoria" ToRole="Evento" />
+        </EntityType>
+        <EntityType Name="CategoriaAfiliado">
+          <Key>
+            <PropertyRef Name="idCategoria" />
+            <PropertyRef Name="idAfiliado" />
+          </Key>
+          <Property Name="idCategoria" Type="Int32" Nullable="false" />
+          <Property Name="idAfiliado" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ciudad">
+          <Key>
+            <PropertyRef Name="idCiudad" />
+          </Key>
+          <Property Name="idCiudad" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="nombreCiudad" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="true" />
+          <Property Name="idPais" Type="Int32" Nullable="false" />
+          <Property Name="idEstado" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Estado" Relationship="Promo2EventModel.FK_Ciudad_Estado" FromRole="Ciudad" ToRole="Estado" />
+          <NavigationProperty Name="Pais" Relationship="Promo2EventModel.FK_Ciudad_Pais" FromRole="Ciudad" ToRole="Pais" />
+          <NavigationProperty Name="Evento" Relationship="Promo2EventModel.FK_Evento_Ciudad" FromRole="Ciudad" ToRole="Evento" />
+          <NavigationProperty Name="Afiliado" Relationship="Promo2EventModel.FK_Afiliado_Ciudad" FromRole="Ciudad" ToRole="Afiliado" />
+        </EntityType>
+        <EntityType Name="Estado">
+          <Key>
+            <PropertyRef Name="idEstado" />
+          </Key>
+          <Property Name="idEstado" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="nombreEstado" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="true" />
+          <Property Name="idPais" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Afiliado" Relationship="Promo2EventModel.FK_Afiliado_Estado" FromRole="Estado" ToRole="Afiliado" />
+          <NavigationProperty Name="Ciudad" Relationship="Promo2EventModel.FK_Ciudad_Estado" FromRole="Estado" ToRole="Ciudad" />
+          <NavigationProperty Name="Pais" Relationship="Promo2EventModel.FK_Estado_Pais" FromRole="Estado" ToRole="Pais" />
+          <NavigationProperty Name="Evento" Relationship="Promo2EventModel.FK_Evento_Estado" FromRole="Estado" ToRole="Evento" />
+        </EntityType>
+        <EntityType Name="Evento">
+          <Key>
+            <PropertyRef Name="idEvento" />
+          </Key>
+          <Property Name="idEvento" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="idAfiliado" Type="Int32" Nullable="false" />
+          <Property Name="nombreAfiliado" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="true" />
+          <Property Name="idCategoria" Type="Int32" Nullable="false" />
+          <Property Name="fechaInicio" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="fechaExpiracion" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="activo" Type="Boolean" Nullable="false" />
+          <Property Name="imgUrl" Type="String" MaxLength="300" Unicode="true" FixedLength="true" />
+          <Property Name="direccion" Type="String" Nullable="false" MaxLength="500" Unicode="true" FixedLength="true" />
+          <Property Name="descripcion" Type="String" Nullable="false" MaxLength="500" Unicode="true" FixedLength="true" />
+          <Property Name="totalPuntaje" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="cantPuntuaciones" Type="Int32" Nullable="false" />
+          <Property Name="idCiudad" Type="Int32" Nullable="false" />
+          <Property Name="idEstado" Type="Int32" Nullable="false" />
+          <Property Name="idPais" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Afiliado" Relationship="Promo2EventModel.FK_Evento_Afiliado" FromRole="Evento" ToRole="Afiliado" />
+          <NavigationProperty Name="Categoria" Relationship="Promo2EventModel.FK_Evento_Categoria" FromRole="Evento" ToRole="Categoria" />
+          <NavigationProperty Name="Ciudad" Relationship="Promo2EventModel.FK_Evento_Ciudad" FromRole="Evento" ToRole="Ciudad" />
+          <NavigationProperty Name="Estado" Relationship="Promo2EventModel.FK_Evento_Estado" FromRole="Evento" ToRole="Estado" />
+          <NavigationProperty Name="Pais" Relationship="Promo2EventModel.FK_Evento_Pais" FromRole="Evento" ToRole="Pais" />
+          <NavigationProperty Name="Puntuacion" Relationship="Promo2EventModel.FK_Puntuacion_Evento" FromRole="Evento" ToRole="Puntuacion" />
+        </EntityType>
+        <EntityType Name="Pais">
+          <Key>
+            <PropertyRef Name="idPais" />
+          </Key>
+          <Property Name="idPais" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="nombrePais" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="true" />
+          <NavigationProperty Name="Afiliado" Relationship="Promo2EventModel.FK_Afiliado_Pais" FromRole="Pais" ToRole="Afiliado" />
+          <NavigationProperty Name="Ciudad" Relationship="Promo2EventModel.FK_Ciudad_Pais" FromRole="Pais" ToRole="Ciudad" />
+          <NavigationProperty Name="Estado" Relationship="Promo2EventModel.FK_Estado_Pais" FromRole="Pais" ToRole="Estado" />
+          <NavigationProperty Name="Evento" Relationship="Promo2EventModel.FK_Evento_Pais" FromRole="Pais" ToRole="Evento" />
+        </EntityType>
+        <EntityType Name="Puntuacion">
+          <Key>
+            <PropertyRef Name="idPuntuacion" />
+          </Key>
+          <Property Name="idPuntuacion" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="valorPuntaje" Type="Int32" Nullable="false" />
+          <Property Name="fechaPuntaje" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="idEvento" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Evento" Relationship="Promo2EventModel.FK_Puntuacion_Evento" FromRole="Puntuacion" ToRole="Evento" />
+        </EntityType>
+        <Association Name="FK_Afiliado_Estado">
+          <End Role="Estado" Type="Promo2EventModel.Estado" Multiplicity="1" />
+          <End Role="Afiliado" Type="Promo2EventModel.Afiliado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estado">
+              <PropertyRef Name="idEstado" />
+            </Principal>
+            <Dependent Role="Afiliado">
+              <PropertyRef Name="idEstado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Afiliado_Pais">
+          <End Role="Pais" Type="Promo2EventModel.Pais" Multiplicity="1" />
+          <End Role="Afiliado" Type="Promo2EventModel.Afiliado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pais">
+              <PropertyRef Name="idPais" />
+            </Principal>
+            <Dependent Role="Afiliado">
+              <PropertyRef Name="idPais" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Evento_Afiliado">
+          <End Role="Afiliado" Type="Promo2EventModel.Afiliado" Multiplicity="1" />
+          <End Role="Evento" Type="Promo2EventModel.Evento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Afiliado">
+              <PropertyRef Name="idAfiliado" />
+            </Principal>
+            <Dependent Role="Evento">
+              <PropertyRef Name="idAfiliado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Evento_Categoria">
+          <End Role="Categoria" Type="Promo2EventModel.Categoria" Multiplicity="1" />
+          <End Role="Evento" Type="Promo2EventModel.Evento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categoria">
+              <PropertyRef Name="idCategoria" />
+            </Principal>
+            <Dependent Role="Evento">
+              <PropertyRef Name="idCategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ciudad_Estado">
+          <End Role="Estado" Type="Promo2EventModel.Estado" Multiplicity="1" />
+          <End Role="Ciudad" Type="Promo2EventModel.Ciudad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estado">
+              <PropertyRef Name="idEstado" />
+            </Principal>
+            <Dependent Role="Ciudad">
+              <PropertyRef Name="idEstado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ciudad_Pais">
+          <End Role="Pais" Type="Promo2EventModel.Pais" Multiplicity="1" />
+          <End Role="Ciudad" Type="Promo2EventModel.Ciudad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pais">
+              <PropertyRef Name="idPais" />
+            </Principal>
+            <Dependent Role="Ciudad">
+              <PropertyRef Name="idPais" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Evento_Ciudad">
+          <End Role="Ciudad" Type="Promo2EventModel.Ciudad" Multiplicity="1" />
+          <End Role="Evento" Type="Promo2EventModel.Evento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ciudad">
+              <PropertyRef Name="idCiudad" />
+            </Principal>
+            <Dependent Role="Evento">
+              <PropertyRef Name="idCiudad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Estado_Pais">
+          <End Role="Pais" Type="Promo2EventModel.Pais" Multiplicity="1" />
+          <End Role="Estado" Type="Promo2EventModel.Estado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pais">
+              <PropertyRef Name="idPais" />
+            </Principal>
+            <Dependent Role="Estado">
+              <PropertyRef Name="idPais" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Evento_Estado">
+          <End Role="Estado" Type="Promo2EventModel.Estado" Multiplicity="1" />
+          <End Role="Evento" Type="Promo2EventModel.Evento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estado">
+              <PropertyRef Name="idEstado" />
+            </Principal>
+            <Dependent Role="Evento">
+              <PropertyRef Name="idEstado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Evento_Pais">
+          <End Role="Pais" Type="Promo2EventModel.Pais" Multiplicity="1" />
+          <End Role="Evento" Type="Promo2EventModel.Evento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pais">
+              <PropertyRef Name="idPais" />
+            </Principal>
+            <Dependent Role="Evento">
+              <PropertyRef Name="idPais" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Puntuacion_Evento">
+          <End Role="Evento" Type="Promo2EventModel.Evento" Multiplicity="1" />
+          <End Role="Puntuacion" Type="Promo2EventModel.Puntuacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Evento">
+              <PropertyRef Name="idEvento" />
+            </Principal>
+            <Dependent Role="Puntuacion">
+              <PropertyRef Name="idEvento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Afiliado_Ciudad">
+          <End Type="Promo2EventModel.Ciudad" Role="Ciudad" Multiplicity="1" />
+          <End Type="Promo2EventModel.Afiliado" Role="Afiliado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ciudad">
+              <PropertyRef Name="idCiudad" />
+            </Principal>
+            <Dependent Role="Afiliado">
+              <PropertyRef Name="idCiudad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Promo2EventModelStoreContainer" CdmEntityContainer="Promo2EventEntities">
+          <EntitySetMapping Name="Afiliado">
+            <EntityTypeMapping TypeName="Promo2EventModel.Afiliado">
+              <MappingFragment StoreEntitySet="Afiliado">
+                <ScalarProperty Name="idAfiliado" ColumnName="idAfiliado" />
+                <ScalarProperty Name="nombreAfiliado" ColumnName="nombreAfiliado" />
+                <ScalarProperty Name="direccionAfiliado" ColumnName="direccionAfiliado" />
+                <ScalarProperty Name="imgPathAfiliado" ColumnName="imgPathAfiliado" />
+                <ScalarProperty Name="emailAfiliado" ColumnName="emailAfiliado" />
+                <ScalarProperty Name="passwordAfiliado" ColumnName="passwordAfiliado" />
+                <ScalarProperty Name="preguntaSeguridad" ColumnName="preguntaSeguridad" />
+                <ScalarProperty Name="respuestaSeguridad" ColumnName="respuestaSeguridad" />
+                <ScalarProperty Name="statusAfiliado" ColumnName="statusAfiliado" />
+                <ScalarProperty Name="fechaCreoAfiliado" ColumnName="fechaCreoAfiliado" />
+                <ScalarProperty Name="fechaModiAfiliado" ColumnName="fechaModiAfiliado" />
+                <ScalarProperty Name="idPais" ColumnName="idPais" />
+                <ScalarProperty Name="idCiudad" ColumnName="idCiudad" />
+                <ScalarProperty Name="idEstado" ColumnName="idEstado" />
+                <ScalarProperty Name="raizVal" ColumnName="raizVal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categoria">
+            <EntityTypeMapping TypeName="Promo2EventModel.Categoria">
+              <MappingFragment StoreEntitySet="Categoria">
+                <ScalarProperty Name="idCategoria" ColumnName="idCategoria" />
+                <ScalarProperty Name="nombreCategoria" ColumnName="nombreCategoria" />
+                <ScalarProperty Name="imgPathCategoria" ColumnName="imgPathCategoria" />
+                <ScalarProperty Name="statusCategoria" ColumnName="statusCategoria" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CategoriaAfiliado">
+            <EntityTypeMapping TypeName="Promo2EventModel.CategoriaAfiliado">
+              <MappingFragment StoreEntitySet="CategoriaAfiliado">
+                <ScalarProperty Name="idCategoria" ColumnName="idCategoria" />
+                <ScalarProperty Name="idAfiliado" ColumnName="idAfiliado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ciudad">
+            <EntityTypeMapping TypeName="Promo2EventModel.Ciudad">
+              <MappingFragment StoreEntitySet="Ciudad">
+                <ScalarProperty Name="idCiudad" ColumnName="idCiudad" />
+                <ScalarProperty Name="nombreCiudad" ColumnName="nombreCiudad" />
+                <ScalarProperty Name="idPais" ColumnName="idPais" />
+                <ScalarProperty Name="idEstado" ColumnName="idEstado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Estado">
+            <EntityTypeMapping TypeName="Promo2EventModel.Estado">
+              <MappingFragment StoreEntitySet="Estado">
+                <ScalarProperty Name="idEstado" ColumnName="idEstado" />
+                <ScalarProperty Name="nombreEstado" ColumnName="nombreEstado" />
+                <ScalarProperty Name="idPais" ColumnName="idPais" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Evento">
+            <EntityTypeMapping TypeName="Promo2EventModel.Evento">
+              <MappingFragment StoreEntitySet="Evento">
+                <ScalarProperty Name="idEvento" ColumnName="idEvento" />
+                <ScalarProperty Name="idAfiliado" ColumnName="idAfiliado" />
+                <ScalarProperty Name="nombreAfiliado" ColumnName="nombreAfiliado" />
+                <ScalarProperty Name="idCategoria" ColumnName="idCategoria" />
+                <ScalarProperty Name="fechaInicio" ColumnName="fechaInicio" />
+                <ScalarProperty Name="fechaExpiracion" ColumnName="fechaExpiracion" />
+                <ScalarProperty Name="activo" ColumnName="activo" />
+                <ScalarProperty Name="imgUrl" ColumnName="imgUrl" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="totalPuntaje" ColumnName="totalPuntaje" />
+                <ScalarProperty Name="cantPuntuaciones" ColumnName="cantPuntuaciones" />
+                <ScalarProperty Name="idCiudad" ColumnName="idCiudad" />
+                <ScalarProperty Name="idEstado" ColumnName="idEstado" />
+                <ScalarProperty Name="idPais" ColumnName="idPais" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pais">
+            <EntityTypeMapping TypeName="Promo2EventModel.Pais">
+              <MappingFragment StoreEntitySet="Pais">
+                <ScalarProperty Name="idPais" ColumnName="idPais" />
+                <ScalarProperty Name="nombrePais" ColumnName="nombrePais" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Puntuacion">
+            <EntityTypeMapping TypeName="Promo2EventModel.Puntuacion">
+              <MappingFragment StoreEntitySet="Puntuacion">
+                <ScalarProperty Name="idPuntuacion" ColumnName="idPuntuacion" />
+                <ScalarProperty Name="valorPuntaje" ColumnName="valorPuntaje" />
+                <ScalarProperty Name="fechaPuntaje" ColumnName="fechaPuntaje" />
+                <ScalarProperty Name="idEvento" ColumnName="idEvento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

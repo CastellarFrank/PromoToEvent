@@ -1,0 +1,88 @@
+﻿@model PromoToEvents.Models.LoginModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />    
+    <!--[if gt IE 8]>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />        
+    <![endif]-->                
+    <title>Login - Aries Premium Admin Template</title>
+    <link rel="icon" type="image/ico" href="~/Content/themes/aries/img/favicon.ico"/>
+    
+    <link href="~/Content/themes/aries/css/stylesheets.css" rel="stylesheet" type="text/css" />
+    <!--[if lt IE 10]>
+        <link href="~/Content/themes/aries/css/ie.css" rel="stylesheet" type="text/css" />
+    <![endif]-->           
+</head>
+    <body>
+        <div id="loader"><img src="~/Content/themes/aries/img/loader.gif"/></div>
+            <div class="login">
+                <div class="page-header">
+                    <div class="icon">
+                        <span class="ico-arrow-right"></span>
+                    </div>
+                    <h1>Login <small>METRO STYLE ADMIN PANEL</small></h1>
+                </div>        
+    
+                @using (Html.BeginForm("Login", "Account", FormMethod.Post, new {id = "Form"}))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true)
+                    <div class="row-fluid">
+                        <div class="row-form">
+                            <div class="span12">
+                                <input type="text" name="UserEmail" id="UserEmail" placeholder="@Html.DisplayNameFor(model => model.UserEmail)"/>
+                            </div>
+                        </div>
+                        <div class="row-form">
+                            <div class="span12">
+                                <input type="password" name="Password" placeholder="@Html.DisplayNameFor(model => model.Password)"/>
+                            </div>            
+                        </div>
+                        <div class="row-form">
+                            <div class="span12">
+                                @Html.CheckBoxFor(model => model.RememberMe)
+                                @Html.DisplayNameFor(model => model.RememberMe)
+                            </div>
+                        </div>
+                        <div class="row-form">
+                            <div class="span12">
+                                <button class="btn">Sign in <span class="icon-arrow-next icon-white"></span></button>
+                            </div>                
+                        </div>
+                    </div>
+                }
+        </div>
+    
+    
+        <script type='text/javascript' src='~/Content/themes/aries/js/plugins/jquery/jquery-1.9.1.min.js'></script>
+        <script type='text/javascript' src='~/Content/themes/aries/js/plugins/jquery/jquery-ui-1.10.1.custom.min.js'></script>
+        <script type='text/javascript' src='~/Content/themes/aries/js/plugins/jquery/jquery-migrate-1.1.1.min.js'></script>
+        <script type='text/javascript' src='~/Content/themes/aries/js/plugins/jquery/globalize.js'></script>
+        <script type='text/javascript' src='~/Content/themes/aries/js/plugins/other/excanvas.js'></script>
+    
+        <script type='text/javascript' src='~/Content/themes/aries/js/plugins/other/jquery.mousewheel.min.js'></script>
+        
+        <script type='text/javascript' src='~/Content/themes/aries/js/plugins/bootstrap/bootstrap.min.js'></script>
+    
+        <script type='text/javascript' src="~/Content/themes/aries/js/plugins/uniform/jquery.uniform.min.js"></script>
+    
+        <script type='text/javascript' src='~/Content/themes/aries/js/plugins/shbrush/XRegExp.js'></script>
+        <script type='text/javascript' src='~/Content/themes/aries/js/plugins/shbrush/shCore.js'></script>
+        <script type='text/javascript' src='~/Content/themes/aries/js/plugins/shbrush/shBrushXml.js'></script>
+        <script type='text/javascript' src='~/Content/themes/aries/js/plugins/shbrush/shBrushJScript.js'></script>
+        <script type='text/javascript' src='~/Content/themes/aries/js/plugins/shbrush/shBrushCss.js'></script>    
+    
+        <script type='text/javascript' src='~/Content/themes/aries/js/plugins.js'></script>
+        <script type='text/javascript' src='~/Content/themes/aries/js/charts.js'></script>
+        <script type='text/javascript' src='~/Content/themes/aries/js/actions.js'></script>
+    
+    </body>
+</html>
