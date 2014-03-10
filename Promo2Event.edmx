@@ -68,13 +68,13 @@
             <PropertyRef Name="idAfiliado" />
           </Key>
           <Property Name="idAfiliado" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="nombreAfiliado" Type="nchar" Nullable="false" MaxLength="100" />
-          <Property Name="direccionAfiliado" Type="nchar" Nullable="false" MaxLength="300" />
-          <Property Name="imgPathAfiliado" Type="nchar" MaxLength="300" />
-          <Property Name="emailAfiliado" Type="nchar" Nullable="false" MaxLength="150" />
-          <Property Name="passwordAfiliado" Type="nchar" Nullable="false" MaxLength="100" />
-          <Property Name="preguntaSeguridad" Type="nchar" MaxLength="200" />
-          <Property Name="respuestaSeguridad" Type="nchar" MaxLength="200" />
+          <Property Name="nombreAfiliado" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="direccionAfiliado" Type="varchar" Nullable="false" MaxLength="300" />
+          <Property Name="imgPathAfiliado" Type="varchar" MaxLength="300" />
+          <Property Name="emailAfiliado" Type="varchar" Nullable="false" MaxLength="150" />
+          <Property Name="passwordAfiliado" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="preguntaSeguridad" Type="varchar" MaxLength="200" />
+          <Property Name="respuestaSeguridad" Type="varchar" MaxLength="200" />
           <Property Name="statusAfiliado" Type="bit" Nullable="false" />
           <Property Name="fechaCreoAfiliado" Type="date" Nullable="false" />
           <Property Name="fechaModiAfiliado" Type="date" Nullable="false" />
@@ -88,8 +88,8 @@
             <PropertyRef Name="idCategoria" />
           </Key>
           <Property Name="idCategoria" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="nombreCategoria" Type="nchar" Nullable="false" MaxLength="100" />
-          <Property Name="imgPathCategoria" Type="nchar" MaxLength="300" />
+          <Property Name="nombreCategoria" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="imgPathCategoria" Type="varchar" MaxLength="300" />
           <Property Name="statusCategoria" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="CategoriaAfiliado">
@@ -105,7 +105,7 @@
             <PropertyRef Name="idCiudad" />
           </Key>
           <Property Name="idCiudad" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="nombreCiudad" Type="nchar" Nullable="false" MaxLength="100" />
+          <Property Name="nombreCiudad" Type="varchar" Nullable="false" MaxLength="100" />
           <Property Name="idPais" Type="int" Nullable="false" />
           <Property Name="idEstado" Type="int" Nullable="false" />
         </EntityType>
@@ -114,7 +114,7 @@
             <PropertyRef Name="idEstado" />
           </Key>
           <Property Name="idEstado" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="nombreEstado" Type="nchar" Nullable="false" MaxLength="100" />
+          <Property Name="nombreEstado" Type="varchar" Nullable="false" MaxLength="100" />
           <Property Name="idPais" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Evento">
@@ -123,14 +123,14 @@
           </Key>
           <Property Name="idEvento" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="idAfiliado" Type="int" Nullable="false" />
-          <Property Name="nombreAfiliado" Type="nchar" Nullable="false" MaxLength="100" />
+          <Property Name="nombreAfiliado" Type="varchar" Nullable="false" MaxLength="100" />
           <Property Name="idCategoria" Type="int" Nullable="false" />
           <Property Name="fechaInicio" Type="date" Nullable="false" />
           <Property Name="fechaExpiracion" Type="date" Nullable="false" />
           <Property Name="activo" Type="bit" Nullable="false" />
-          <Property Name="imgUrl" Type="nchar" MaxLength="300" />
-          <Property Name="direccion" Type="nchar" Nullable="false" MaxLength="500" />
-          <Property Name="descripcion" Type="nchar" Nullable="false" MaxLength="500" />
+          <Property Name="imgUrl" Type="varchar" MaxLength="300" />
+          <Property Name="direccion" Type="varchar" Nullable="false" MaxLength="500" />
+          <Property Name="descripcion" Type="varchar" Nullable="false" MaxLength="500" />
           <Property Name="totalPuntaje" Type="decimal" Nullable="false" />
           <Property Name="cantPuntuaciones" Type="int" Nullable="false" />
           <Property Name="idCiudad" Type="int" Nullable="false" />
@@ -142,7 +142,7 @@
             <PropertyRef Name="idPais" />
           </Key>
           <Property Name="idPais" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="nombrePais" Type="nchar" Nullable="false" MaxLength="100" />
+          <Property Name="nombrePais" Type="varchar" Nullable="false" MaxLength="100" />
         </EntityType>
         <EntityType Name="Puntuacion">
           <Key>
@@ -364,13 +364,13 @@
             <PropertyRef Name="idAfiliado" />
           </Key>
           <Property Name="idAfiliado" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-          <Property Name="nombreAfiliado" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="true" />
-          <Property Name="direccionAfiliado" Type="String" Nullable="false" MaxLength="300" Unicode="true" FixedLength="true" />
-          <Property Name="imgPathAfiliado" Type="String" MaxLength="300" Unicode="true" FixedLength="true" />
-          <Property Name="emailAfiliado" Type="String" Nullable="false" MaxLength="150" Unicode="true" FixedLength="true" />
-          <Property Name="passwordAfiliado" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="true" />
-          <Property Name="preguntaSeguridad" Type="String" MaxLength="200" Unicode="true" FixedLength="true" />
-          <Property Name="respuestaSeguridad" Type="String" MaxLength="200" Unicode="true" FixedLength="true" />
+          <Property Name="nombreAfiliado" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="direccionAfiliado" Type="String" Nullable="false" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="imgPathAfiliado" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="emailAfiliado" Type="String" Nullable="false" MaxLength="150" Unicode="false" FixedLength="false" />
+          <Property Name="passwordAfiliado" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="preguntaSeguridad" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="respuestaSeguridad" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
           <Property Name="statusAfiliado" Type="Boolean" Nullable="false" />
           <Property Name="fechaCreoAfiliado" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="fechaModiAfiliado" Type="DateTime" Nullable="false" Precision="0" />
@@ -388,8 +388,8 @@
             <PropertyRef Name="idCategoria" />
           </Key>
           <Property Name="idCategoria" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-          <Property Name="nombreCategoria" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="true" />
-          <Property Name="imgPathCategoria" Type="String" MaxLength="300" Unicode="true" FixedLength="true" />
+          <Property Name="nombreCategoria" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="imgPathCategoria" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
           <Property Name="statusCategoria" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Evento" Relationship="Promo2EventModel.FK_Evento_Categoria" FromRole="Categoria" ToRole="Evento" />
         </EntityType>
@@ -406,7 +406,7 @@
             <PropertyRef Name="idCiudad" />
           </Key>
           <Property Name="idCiudad" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-          <Property Name="nombreCiudad" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="true" />
+          <Property Name="nombreCiudad" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
           <Property Name="idPais" Type="Int32" Nullable="false" />
           <Property Name="idEstado" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Estado" Relationship="Promo2EventModel.FK_Ciudad_Estado" FromRole="Ciudad" ToRole="Estado" />
@@ -419,7 +419,7 @@
             <PropertyRef Name="idEstado" />
           </Key>
           <Property Name="idEstado" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-          <Property Name="nombreEstado" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="true" />
+          <Property Name="nombreEstado" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
           <Property Name="idPais" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Afiliado" Relationship="Promo2EventModel.FK_Afiliado_Estado" FromRole="Estado" ToRole="Afiliado" />
           <NavigationProperty Name="Ciudad" Relationship="Promo2EventModel.FK_Ciudad_Estado" FromRole="Estado" ToRole="Ciudad" />
@@ -432,14 +432,14 @@
           </Key>
           <Property Name="idEvento" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
           <Property Name="idAfiliado" Type="Int32" Nullable="false" />
-          <Property Name="nombreAfiliado" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="true" />
+          <Property Name="nombreAfiliado" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
           <Property Name="idCategoria" Type="Int32" Nullable="false" />
           <Property Name="fechaInicio" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="fechaExpiracion" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="activo" Type="Boolean" Nullable="false" />
-          <Property Name="imgUrl" Type="String" MaxLength="300" Unicode="true" FixedLength="true" />
-          <Property Name="direccion" Type="String" Nullable="false" MaxLength="500" Unicode="true" FixedLength="true" />
-          <Property Name="descripcion" Type="String" Nullable="false" MaxLength="500" Unicode="true" FixedLength="true" />
+          <Property Name="imgUrl" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="direccion" Type="String" Nullable="false" MaxLength="500" Unicode="false" FixedLength="false" />
+          <Property Name="descripcion" Type="String" Nullable="false" MaxLength="500" Unicode="false" FixedLength="false" />
           <Property Name="totalPuntaje" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
           <Property Name="cantPuntuaciones" Type="Int32" Nullable="false" />
           <Property Name="idCiudad" Type="Int32" Nullable="false" />
@@ -457,7 +457,7 @@
             <PropertyRef Name="idPais" />
           </Key>
           <Property Name="idPais" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-          <Property Name="nombrePais" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="true" />
+          <Property Name="nombrePais" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
           <NavigationProperty Name="Afiliado" Relationship="Promo2EventModel.FK_Afiliado_Pais" FromRole="Pais" ToRole="Afiliado" />
           <NavigationProperty Name="Ciudad" Relationship="Promo2EventModel.FK_Ciudad_Pais" FromRole="Pais" ToRole="Ciudad" />
           <NavigationProperty Name="Estado" Relationship="Promo2EventModel.FK_Estado_Pais" FromRole="Pais" ToRole="Estado" />

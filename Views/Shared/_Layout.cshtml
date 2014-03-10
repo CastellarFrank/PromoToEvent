@@ -14,7 +14,6 @@
     
     <link href="~/Content/themes/aries/css/stylesheets.css" rel="stylesheet" type="text/css" />
 
-    @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
     <body>
@@ -258,13 +257,6 @@
             </div>
         </div>
         
-        <!-- Modal -->
-        <div tabindex="-1" class="modal hide fade" id="EditPopUpModal" style="display: none;" aria-hidden="true">
-            <div id="EditPopUpModalBody" class="modal-body">
-        
-            </div>
-        </div>
-        
 
         @Scripts.Render("~/bundles/jquery")
     @RenderSection("scripts", required: false)
@@ -304,7 +296,9 @@
     <script type='text/javascript' src='~/Content/themes/aries/js/plugins/shbrush/shBrushJScript.js'></script>
     <script type='text/javascript' src='~/Content/themes/aries/js/plugins/shbrush/shBrushCss.js'></script>    
     
-    <script type='text/javascript' src='~/Content/themes/aries/js/plugins.js'></script>
+        <script type='text/javascript' src='~/Content/themes/aries/js/plugins/fancybox/jquery.fancybox.pack.js'></script>
+
+        <script type='text/javascript' src='~/Content/themes/aries/js/plugins.js'></script>
     <script type='text/javascript' src='~/Content/themes/aries/js/charts.js'></script>
     <script type='text/javascript' src='~/Content/themes/aries/js/actions.js'></script>
     
@@ -333,7 +327,8 @@
                         })
                         .done(function (html) {
                             $("#EditPopUpModalBody").replaceWith(html);
-                        });
+                            $("#EditPopUpModalActivator").click();
+                    });
                 });
                 //end edit
 

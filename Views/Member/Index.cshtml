@@ -15,9 +15,7 @@
 <div class="row-fluid">
     <div class="span12">
         <div class="block">
-            <p>
-                @Html.ActionLink("Create New", "Create")
-            </p>
+            <button class="btn toPopUp" type="button" role="button" id="/Member/Add"><span class=" ico-plus-sign icon-white"></span> Add New Member</button>
             <div class="head dblue">
                 <div class="icon"><span class="ico-layout-9"></span></div>
                 <h2>Members Table </h2>                                 
@@ -86,7 +84,11 @@
                                     @Html.DisplayFor(modelItem => item.Address)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.ImgPath)
+                                    <a class="fb" rel="group" href="@Url.Content(Html.DisplayFor(m => item.ImgPath).ToString())">
+                                        <img src="@Url.Content(Html.DisplayFor(m => item.ImgPath).ToString())" class="img-polaroid"
+                                             style=" max-width: 50px; max-height: 40px;"/>
+                                    </a>
+                                    
                                 </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.Email)
@@ -122,10 +124,10 @@
                                 </td>
                                 <td>
                                     <div class="btn-group" style=" margin-top: 5px; ">
-                                        <button class="btn btn-primary toPopUp" data-toggle="modal" data-target="#EditPopUpModal" id="/Afiliado/Edit/@Html.DisplayFor(modelItem => item.IdAfiliado)"><span class="icon-pencil icon-white"></span></button>
+                                        <button class="btn btn-primary toPopUp" role="button" id="/Member/Edit/@Html.DisplayFor(modelItem => item.IdAfiliado)"><span class="icon-pencil icon-white"></span></button>
                                         <button class="btn btn-danger toDelete" role="button" id="@Html.DisplayFor(modelItem => item.IdAfiliado)_Val"><span class="icon-remove icon-white"></span></button>
                                         
-                                        @using (Html.BeginForm("Delete", "Afiliado", new { id = Html.DisplayFor(modelItem => item.IdAfiliado) }, FormMethod.Post,
+                                        @using (Html.BeginForm("Delete", "Member", new { id = Html.DisplayFor(modelItem => item.IdAfiliado) }, FormMethod.Post,
                                             new { id = "Form_" + Html.DisplayFor(modelItem => item.IdAfiliado) + "_Val", style = "display: none" })) { }
                                         <input type="hidden" id="@Html.DisplayFor(modelItem => item.IdAfiliado)_Val_Message"
                                                value="Do you really want to delete the member with name @Html.DisplayFor(modelItem => item.Name)?" />
@@ -137,5 +139,14 @@
                 </table>                    
             </div> 
         </div>      
+    </div>
+</div>
+
+<!-- Modal -->
+<a id="EditPopUpModalActivator" href="#EditPopUpModal" role="button" class="btn" data-toggle="modal" style="display: none">Form dialog</a>
+<div id="EditPopUpModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" 
+    aria-hidden="true" style="top: 40%;">
+    <div id="EditPopUpModalBody" class="modal-body">
+        
     </div>
 </div>

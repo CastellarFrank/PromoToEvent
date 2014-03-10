@@ -153,7 +153,10 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Logic\DataBase\AfiliadoRepository.cs" />
+    <Compile Include="Logic\DataBase\CiudadRepository.cs" />
+    <Compile Include="Logic\DataBase\EstadoRepository.cs" />
     <Compile Include="Logic\DataBase\InitializeDataBase.cs" />
+    <Compile Include="Logic\DataBase\PaisRepository.cs" />
     <Compile Include="Logic\Session\ISessionManagement.cs" />
     <Compile Include="Logic\Session\SessionLayer.cs" />
     <Compile Include="Models\UserModel.cs" />
@@ -456,15 +459,18 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Views\Web.config" />
-    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Member\Index.cshtml" />
+    <Content Include="Views\Member\Edit.cshtml" />
+    <Content Include="Views\Member\Add.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\dataImg\membersImages\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

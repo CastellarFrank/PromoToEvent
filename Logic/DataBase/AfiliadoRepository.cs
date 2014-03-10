@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Web.Mvc;
 
 namespace PromoToEvents.Logic.DataBase
 {
@@ -11,7 +13,7 @@ namespace PromoToEvents.Logic.DataBase
         Afiliado Create(Afiliado itemToCreate);
         IQueryable<TResult> Query<TResult>(Expression<Func<Afiliado, TResult>> expression);
         IQueryable<Afiliado> Filter(Expression<Func<Afiliado, bool>> expression);
-        Afiliado Update(Afiliado itemToUpdate, bool updateRole);
+        Afiliado Update(Afiliado itemToUpdate);
         Afiliado Delete(long id);
         void SaveChanges();
     }
@@ -71,7 +73,7 @@ namespace PromoToEvents.Logic.DataBase
             return _context.Afiliado.Where(expression);
         }
 
-        public Afiliado Update(Afiliado itemToUpdate, bool updateRole)
+        public Afiliado Update(Afiliado itemToUpdate)
         {
             _context.SaveChanges();
             return itemToUpdate;
@@ -95,9 +97,61 @@ namespace PromoToEvents.Logic.DataBase
             return raizVal > 0 ? UserTypeMortalLabel : UserTypeInmortalLabel;
         }
 
+        public int UserTypeValue(string userType)
+        {
+            return userType.Equals(UserTypeMortalLabel) ? 1 : 0;
+        }
+
         public string ActiveUserLabel(bool isActive)
         {
             return isActive ? ActiveUserActiveLabel : ActiveUserInactiveLabel;
+        }
+
+        public bool ActiveUserValue(string userLabel)
+        {
+            return userLabel.Equals(ActiveUserActiveLabel);
+        }
+
+        public SelectList GetActiveMemberList(bool memberActive)
+        {
+             return new SelectList(new List<SelectListItem>
+                {
+                    new SelectListItem
+                   {
+                       Text = ActiveUserLabel(true),
+                       Value = ActiveUserLabel(true),
+                   },
+                   new SelectListItem
+                   {
+                       Text = ActiveUserLabel(false),
+                       Value = ActiveUserLabel(false),
+                   }
+                },
+                "Value",
+                "Text",
+                ActiveUserLabel(memberActive)
+            );
+        }
+
+        public SelectList GetMemberTypeList(int raizVal)
+        {
+            return new SelectList(new List<SelectListItem>
+            {
+                new SelectListItem
+                {
+                    Text = UserTypeLabel(0),
+                    Value = UserTypeLabel(0)
+                },
+                new SelectListItem
+                {
+                    Text = UserTypeLabel(1),
+                    Value = UserTypeLabel(1)
+                }
+            },
+            "Value",
+            "Text",
+            UserTypeLabel(raizVal)
+            );
         }
     }
 }
