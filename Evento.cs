@@ -21,7 +21,7 @@ namespace PromoToEvents
     
         public int idEvento { get; set; }
         public int idAfiliado { get; set; }
-        public string nombreAfiliado { get; set; }
+        public string nombreEvento { get; set; }
         public int idCategoria { get; set; }
         public System.DateTime fechaInicio { get; set; }
         public System.DateTime fechaExpiracion { get; set; }

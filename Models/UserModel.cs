@@ -75,8 +75,6 @@ namespace PromoToEvents.Models
         public string Address { get; set; }
 
         [Display(Name = "Profile Picture")]
-        public string ImgPath { get; set; }
-        
         public HttpPostedFileBase PictureFile {get; set; }
 
         [Required]

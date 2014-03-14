@@ -13,6 +13,7 @@ namespace PromoToEvents.Logic.Session
         private readonly string _userEmailIdentifier;
         private readonly string _userRoleIdentifier;
         private readonly string _userDisplayNameIdentifier;
+        private readonly string _userIdIdentifier;
 
 
         private SessionLayer()
@@ -20,6 +21,7 @@ namespace PromoToEvents.Logic.Session
             _userEmailIdentifier = "loggedUserEmail";
             _userRoleIdentifier = "loggedUserRole";
             _userDisplayNameIdentifier = "loggedUserName";
+            _userIdIdentifier = "loggedId";
 
         }
 
@@ -30,11 +32,10 @@ namespace PromoToEvents.Logic.Session
 
         public bool LogIn(string userName, string password, bool remember = false)
         {
-            if (!ValidateUser(userName, password)) return false;
+            var afiliado = ValidateUser(userName, password);
+            if (afiliado == null) return false;
 
-            HttpContext.Current.Session[_userEmailIdentifier] = userName;
-            HttpContext.Current.Session[_userRoleIdentifier] = GetUserRole(userName);
-            HttpContext.Current.Session[_userDisplayNameIdentifier] = GetUserName(userName);
+            UpdateSessionFromUser(afiliado);
 
             FormsAuthentication.RedirectFromLoginPage(userName, remember);
 
@@ -47,53 +48,68 @@ namespace PromoToEvents.Logic.Session
             HttpContext.Current.Session.Remove(_userEmailIdentifier);
             HttpContext.Current.Session.Remove(_userRoleIdentifier);
             HttpContext.Current.Session.Remove(_userDisplayNameIdentifier);
+            HttpContext.Current.Session.Remove(_userIdIdentifier);
 
             if(redirect) FormsAuthentication.RedirectToLoginPage();
 
         }
 
+        public void CheckSession()
+        {
+            if(!HttpContext.Current.User.Identity.IsAuthenticated)
+                FormsAuthentication.RedirectToLoginPage();
+
+            if (HttpContext.Current.Session[_userIdIdentifier] != null) return;
+
+            var id = int.Parse(HttpContext.Current.User.Identity.Name);
+            var user = UserRepo.GetById(id);
+            UpdateSessionFromUser(user);
+        }
+
+        public void UpdateSessionFromUser(Afiliado user)
+        {
+            HttpContext.Current.Session[_userEmailIdentifier] = user.emailAfiliado;
+            HttpContext.Current.Session[_userRoleIdentifier] = UserRepo.UserTypeLabel(user.raizVal);
+            HttpContext.Current.Session[_userDisplayNameIdentifier] = user.nombreAfiliado;
+            HttpContext.Current.Session[_userIdIdentifier] = user.idAfiliado;
+            
+        }
+
         public string GetUserLoggedEmail()
         {
+            CheckSession();
             var userName = HttpContext.Current.Session[_userEmailIdentifier];
             return userName != null ? userName.ToString() : "";
         }
 
         public string GetUserLoggedRole()
         {
+            CheckSession();
             var userRole = HttpContext.Current.Session[_userRoleIdentifier];
             return userRole != null ? userRole.ToString() : "";
         }
 
         public string GetUserLoggedName()
         {
+            CheckSession();
             var userDisplay = HttpContext.Current.Session[_userDisplayNameIdentifier];
             return userDisplay != null ? userDisplay.ToString() : "";
         }
 
-        private static bool ValidateUser(string userName, string password)
+        public int GetUserLoggedId()
+        {
+            CheckSession();
+            var userId = HttpContext.Current.Session[_userIdIdentifier];
+            return userId != null ? int.Parse(userId.ToString()) : 0;
+        }
+
+        private Afiliado ValidateUser(string userName, string password)
         {    
             var myUsers = UserRepo.Filter(x => x.emailAfiliado.Equals(userName) && 
                 x.passwordAfiliado.Equals(password) && x.statusAfiliado);
-            return myUsers != null && myUsers.Count() == 1; 
+            if (myUsers != null && myUsers.Count() == 1)
+                return myUsers.First();
+            return null;
         }
-
-        private static string GetUserRole(string userName)
-        {
-            var users = UserRepo.Filter(x => x.emailAfiliado.Equals(userName));
-
-            if (users != null && users.Count() != 0)
-                return UserRepo.UserTypeLabel(users.First().raizVal);
-            return "";
-        }
-
-        private static string GetUserName(string userEmail)
-        {
-            var myUsers = UserRepo.Filter(x => x.emailAfiliado.Equals(userEmail));
-            return (myUsers != null && myUsers.Count() == 1) ? myUsers.First().nombreAfiliado : ""; 
-        }
-
-
-
-
     }
 }

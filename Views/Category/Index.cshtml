@@ -1,0 +1,97 @@
+﻿@model IEnumerable<PromoToEvents.Models.DisplayCategoriaModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-header">
+    <div class="icon">
+        <span class="ico-layout-7"></span>
+    </div>
+    <h1>Categories <small>All Registered Categories</small></h1>
+</div>
+
+
+<div class="row-fluid">
+    <div class="span12">
+        <div class="block">
+            <button class="btn toPopUp" type="button" role="button" id="/Category/Add"><span class=" ico-plus-sign icon-white"></span> Add New Category</button>
+            <div class="head dblue">
+                <div class="icon"><span class="ico-layout-9"></span></div>
+                <h2>Categories Table </h2>                              
+            </div>  
+        </div>  
+    </div>  
+</div>  
+<div class="data-fluid">
+    <table class="table fpTable lcnp" cellpadding="0" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.IdCategoria)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ImgPath)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Status)
+                </th>
+                <th>
+                    Actions
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model) {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IdCategoria)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        <a class="fb" rel="group" href="@Url.Content(Html.DisplayFor(m => item.ImgPath).ToString())">
+                            <img src="@Url.Content(Html.DisplayFor(m => item.ImgPath).ToString())" class="img-polaroid"
+                                 style=" max-width: 50px; max-height: 40px;"/>
+                        </a>
+                    </td>
+                    <td>
+                        @if (item.Status)
+                        {
+                            <span class="label label-success">@Html.DisplayFor(modelItem => item.LabelStatus)</span>
+                        }
+                        else
+                        {
+                            <span class="label label-info">@Html.DisplayFor(modelItem => item.LabelStatus)</span>
+                        }
+                    </td>
+                    
+                    <td>
+                        <button class="btn btn-primary toPopUp" role="button" id="/Category/Edit/@Html.DisplayFor(modelItem => item.IdCategoria)"><span class="icon-pencil icon-white"></span></button>
+                        <button class="btn btn-danger toDelete" role="button" id="@Html.DisplayFor(modelItem => item.IdCategoria)_Val"><span class="icon-remove icon-white"></span></button>
+                                        
+                        @using (Html.BeginForm("Delete", "Category", new { id = Html.DisplayFor(modelItem => item.IdCategoria) }, FormMethod.Post,
+                            new { id = "Form_" + Html.DisplayFor(modelItem => item.IdCategoria) + "_Val", style = "display: none" })) { }
+                        <input type="hidden" id="@Html.DisplayFor(modelItem => item.IdCategoria)_Val_Message"
+                                value="Do you really want to delete the category with name @Html.DisplayFor(modelItem => item.Name)?" />
+                    </td>
+                </tr>    
+            }
+
+        </tbody>
+    </table>
+</div>
+
+<!-- Modal -->
+<a id="EditPopUpModalActivator" href="#EditPopUpModal" role="button" class="btn" data-toggle="modal" style="display: none">Form dialog</a>
+<div id="EditPopUpModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" 
+    aria-hidden="true" style="top: 50%;">
+    <div id="EditPopUpModalBody" class="modal-body">
+        
+    </div>
+</div>

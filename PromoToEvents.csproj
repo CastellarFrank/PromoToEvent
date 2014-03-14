@@ -125,62 +125,70 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Afiliado.cs">
-      <DependentUpon>Promo2Event.tt</DependentUpon>
+      <DependentUpon>PromoToEvent.tt</DependentUpon>
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Categoria.cs">
-      <DependentUpon>Promo2Event.tt</DependentUpon>
+      <DependentUpon>PromoToEvent.tt</DependentUpon>
     </Compile>
     <Compile Include="CategoriaAfiliado.cs">
-      <DependentUpon>Promo2Event.tt</DependentUpon>
+      <DependentUpon>PromoToEvent.tt</DependentUpon>
     </Compile>
     <Compile Include="Ciudad.cs">
-      <DependentUpon>Promo2Event.tt</DependentUpon>
+      <DependentUpon>PromoToEvent.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\Api\CategoryInfoController.cs" />
+    <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\Constants.cs" />
+    <Compile Include="Controllers\EventController.cs" />
     <Compile Include="Controllers\MemberController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Estado.cs">
-      <DependentUpon>Promo2Event.tt</DependentUpon>
+      <DependentUpon>PromoToEvent.tt</DependentUpon>
     </Compile>
     <Compile Include="Evento.cs">
-      <DependentUpon>Promo2Event.tt</DependentUpon>
+      <DependentUpon>PromoToEvent.tt</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Logic\DataBase\AfiliadoRepository.cs" />
     <Compile Include="Logic\DataBase\CiudadRepository.cs" />
+    <Compile Include="Logic\DataBase\CategoriaRepository.cs" />
+    <Compile Include="Logic\DataBase\EventoRepository.cs" />
     <Compile Include="Logic\DataBase\EstadoRepository.cs" />
     <Compile Include="Logic\DataBase\InitializeDataBase.cs" />
     <Compile Include="Logic\DataBase\PaisRepository.cs" />
     <Compile Include="Logic\Session\ISessionManagement.cs" />
     <Compile Include="Logic\Session\SessionLayer.cs" />
+    <Compile Include="Models\CategoryModel.cs" />
+    <Compile Include="Models\EventModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Pais.cs">
-      <DependentUpon>Promo2Event.tt</DependentUpon>
+      <DependentUpon>PromoToEvent.tt</DependentUpon>
     </Compile>
-    <Compile Include="Promo2Event.Context.cs">
+    <Compile Include="PromoToEvent.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Promo2Event.Context.tt</DependentUpon>
+      <DependentUpon>PromoToEvent.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Promo2Event.cs">
+    <Compile Include="PromoToEvent.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Promo2Event.tt</DependentUpon>
+      <DependentUpon>PromoToEvent.tt</DependentUpon>
     </Compile>
-    <Compile Include="Promo2Event.Designer.cs">
+    <Compile Include="PromoToEvent.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Promo2Event.edmx</DependentUpon>
+      <DependentUpon>PromoToEvent.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Puntuacion.cs">
-      <DependentUpon>Promo2Event.tt</DependentUpon>
+      <DependentUpon>PromoToEvent.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -416,23 +424,24 @@
     <Content Include="Content\themes\aries\img\loaders\Descr.WD3" />
     <Content Include="Content\themes\aries\img\select\Descr.WD3" />
     <Content Include="Content\themes\aries\img\uniform\Descr.WD3" />
-    <EntityDeploy Include="Promo2Event.edmx">
+    <EntityDeploy Include="PromoToEvent.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Promo2Event.Designer.cs</LastGenOutput>
+      <LastGenOutput>PromoToEvent.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Promo2Event.Context.tt">
+    <Content Include="PromoToEvent.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Promo2Event.edmx</DependentUpon>
-      <LastGenOutput>Promo2Event.Context.cs</LastGenOutput>
+      <DependentUpon>PromoToEvent.edmx</DependentUpon>
+      <LastGenOutput>PromoToEvent.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Promo2Event.edmx.diagram">
-      <DependentUpon>Promo2Event.edmx</DependentUpon>
+    <Content Include="PromoToEvent.edmx.diagram">
+      <DependentUpon>PromoToEvent.edmx</DependentUpon>
     </Content>
-    <Content Include="Promo2Event.tt">
+    <Content Include="PromoToEvent.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Promo2Event.edmx</DependentUpon>
-      <LastGenOutput>Promo2Event.cs</LastGenOutput>
+      <DependentUpon>PromoToEvent.edmx</DependentUpon>
+      <LastGenOutput>PromoToEvent.cs</LastGenOutput>
     </Content>
+    <None Include="Properties\PublishProfiles\PromoToEventPublish.pubxml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
@@ -467,9 +476,17 @@
     <Content Include="Views\Member\Index.cshtml" />
     <Content Include="Views\Member\Edit.cshtml" />
     <Content Include="Views\Member\Add.cshtml" />
+    <Content Include="Views\Category\Index.cshtml" />
+    <Content Include="Views\Category\Edit.cshtml" />
+    <Content Include="Views\Category\Add.cshtml" />
+    <Content Include="Views\Event\Index.cshtml" />
+    <Content Include="Views\Event\Add.cshtml" />
+    <Content Include="Views\Event\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\dataImg\categoriesImages\" />
+    <Folder Include="Content\dataImg\eventsImages\" />
     <Folder Include="Content\dataImg\membersImages\" />
   </ItemGroup>
   <ItemGroup>

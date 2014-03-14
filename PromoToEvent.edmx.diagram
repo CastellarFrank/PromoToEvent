@@ -4,15 +4,16 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="ed246bf614fd49c4b8defda1fafbf5c4" Name="Diagram1" ZoomLevel="55">
-        <EntityTypeShape EntityType="Promo2EventModel.Afiliado" Width="1.5" PointX="5.25" PointY="9" IsExpanded="true" />
-        <EntityTypeShape EntityType="Promo2EventModel.Categoria" Width="1.5" PointX="8.25" PointY="7.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Promo2EventModel.CategoriaAfiliado" Width="1.5" PointX="12.5" PointY="7.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Promo2EventModel.Ciudad" Width="1.5" PointX="8.25" PointY="10.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="Promo2EventModel.Estado" Width="1.5" PointX="3" PointY="14.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Promo2EventModel.Evento" Width="1.5" PointX="10.5" PointY="8.75" IsExpanded="true" />
+      <Diagram DiagramId="9125ad2add294e49bacbe7fd2c860b4a" Name="Diagram1" ZoomLevel="74">
+        <EntityTypeShape EntityType="Promo2EventModel.Afiliado" Width="1.5" PointX="5.25" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Promo2EventModel.Categoria" Width="1.5" PointX="8.25" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Promo2EventModel.CategoriaAfiliado" Width="1.5" PointX="11.75" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Promo2EventModel.Ciudad" Width="1.5" PointX="8.25" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Promo2EventModel.Estado" Width="1.5" PointX="3" PointY="14.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Promo2EventModel.Evento" Width="1.5" PointX="10.5" PointY="9" IsExpanded="true" />
         <EntityTypeShape EntityType="Promo2EventModel.Pais" Width="1.5" PointX="0.75" PointY="6" IsExpanded="true" />
-        <EntityTypeShape EntityType="Promo2EventModel.Puntuacion" Width="1.5" PointX="12.75" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Promo2EventModel.Puntuacion" Width="1.5" PointX="12.75" PointY="10.5" IsExpanded="true" />
+        <AssociationConnector Association="Promo2EventModel.FK_Afiliado_Ciudad" ManuallyRouted="false" />
         <AssociationConnector Association="Promo2EventModel.FK_Afiliado_Estado" ManuallyRouted="false" />
         <AssociationConnector Association="Promo2EventModel.FK_Afiliado_Pais" ManuallyRouted="false" />
         <AssociationConnector Association="Promo2EventModel.FK_Evento_Afiliado" ManuallyRouted="false" />
@@ -24,7 +25,6 @@
         <AssociationConnector Association="Promo2EventModel.FK_Evento_Estado" ManuallyRouted="false" />
         <AssociationConnector Association="Promo2EventModel.FK_Evento_Pais" ManuallyRouted="false" />
         <AssociationConnector Association="Promo2EventModel.FK_Puntuacion_Evento" ManuallyRouted="false" />
-        <AssociationConnector Association="Promo2EventModel.FK_Afiliado_Ciudad" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

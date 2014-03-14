@@ -8,6 +8,7 @@ using PromoToEvents.Models;
 
 namespace PromoToEvents.Controllers
 {
+    [Authorize]
     public class MemberController : Controller
     {
         //
@@ -51,7 +52,6 @@ namespace PromoToEvents.Controllers
                 Country = member.idPais,
                 Email = member.emailAfiliado,
                 IdAfiliado = member.idAfiliado,
-                ImgPath = member.imgPathAfiliado,
                 Name = member.nombreAfiliado,
                 State = member.idEstado,
                 UserType = _afiliadoRepo.UserTypeLabel(member.raizVal),

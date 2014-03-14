@@ -16,8 +16,8 @@ namespace PromoToEvents
     {
         public Ciudad()
         {
-            this.Evento = new HashSet<Evento>();
             this.Afiliado = new HashSet<Afiliado>();
+            this.Evento = new HashSet<Evento>();
         }
     
         public int idCiudad { get; set; }
@@ -25,9 +25,9 @@ namespace PromoToEvents
         public int idPais { get; set; }
         public int idEstado { get; set; }
     
+        public virtual ICollection<Afiliado> Afiliado { get; set; }
         public virtual Estado Estado { get; set; }
         public virtual Pais Pais { get; set; }
         public virtual ICollection<Evento> Evento { get; set; }
-        public virtual ICollection<Afiliado> Afiliado { get; set; }
     }
 }

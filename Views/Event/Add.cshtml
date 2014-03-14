@@ -1,0 +1,179 @@
+﻿@model PromoToEvents.Models.RegisterEventoModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Add</title>
+</head>
+<body>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    
+    @using (Html.BeginForm("Add", "Event", FormMethod.Post, new { id = "Form", enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="myModalLabel">Add Event</h3>
+        </div>
+        
+        <div class="row-fluid">
+            <div class="block-fluid">
+                <div class="row-form">
+                    <div class="span3">
+                        @Html.LabelFor(model => model.Name)
+                    </div>
+                    <div class="span9">
+                        @Html.EditorFor(model => model.Name)
+                        @Html.ValidationMessageFor(model => model.Name)
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row-fluid">
+            <div class="block-fluid">
+                <div class="row-form">
+                    <div class="span3">File:</div>
+                    <div class="span9">                            
+                        <input type="file" name="PictureFile" id="PictureFile"/>
+                        @Html.ValidationMessageFor(model => model.PictureFile)                           
+                    </div>
+                </div>           
+            </div>
+        </div>
+        
+        <div class="row-fluid">
+            <div class="block-fluid">
+                <div class="row-form">
+                    <div class="span3">
+                        @Html.DisplayNameFor(model => model.Category):
+                    </div>
+                    <div class="span9">
+                        @Html.DropDownList("Category")
+                        @Html.ValidationMessageFor(model => model.Category)
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row-fluid">
+            <div class="block-fluid">
+                <div class="row-form">
+                    <div class="span2">
+                        @Html.DisplayNameFor(model => model.StartDate):
+                    </div>
+                    <div class="span4">
+                        @Html.EditorFor(model => model.StartDate)
+                        @Html.ValidationMessageFor(model => model.StartDate)
+                    </div>
+                    <div class="span2">
+                        @Html.DisplayNameFor(model => model.EndDate):
+                    </div>
+                    <div class="span4">
+                        @Html.EditorFor(model => model.EndDate)
+                        @Html.ValidationMessageFor(model => model.EndDate)
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row-fluid">
+            <div class="block-fluid">
+                <div class="row-form">
+                    <div class="span3">
+                        @Html.DisplayNameFor(model => model.Active):
+                    </div>
+                    <div class="span9">
+                        @Html.DropDownList("Active")
+                        @Html.ValidationMessageFor(model => model.Active)
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row-fluid">
+            <div class="block-fluid">
+                <div class="row-form">
+                    <div class="span3">
+                        @Html.LabelFor(model => model.Address)
+                    </div>
+                    <div class="span9">
+                        @Html.EditorFor(model => model.Address)
+                        @Html.ValidationMessageFor(model => model.Address)
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row-fluid">
+            <div class="block-fluid">
+                <div class="row-form">
+                    <div class="span3">
+                        @Html.LabelFor(model => model.Description)
+                    </div>
+                    <div class="span9">
+                        @Html.EditorFor(model => model.Description)
+                        @Html.ValidationMessageFor(model => model.Description)
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row-fluid">
+            <div class="block-fluid">
+                <div class="row-form">
+                    <div class="span3">
+                        @Html.DisplayNameFor(model => model.Country):
+                    </div>
+                    <div class="span9">
+                        @Html.DropDownList("Country")
+                        @Html.ValidationMessageFor(model => model.Country)
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row-fluid">
+            <div class="block-fluid">
+                <div class="row-form">
+                    <div class="span3">
+                        @Html.DisplayNameFor(model => model.State):
+                    </div>
+                    <div class="span9">
+                        @Html.DropDownList("State")
+                        @Html.ValidationMessageFor(model => model.State)
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row-fluid">
+            <div class="block-fluid">
+                <div class="row-form">
+                    <div class="span3">
+                        @Html.DisplayNameFor(model => model.City):
+                    </div>
+                    <div class="span9">
+                        @Html.DropDownList("City")
+                        @Html.ValidationMessageFor(model => model.City)
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-primary" aria-hidden="true">Create</button> 
+            <button class="btn btn-warning" data-dismiss="modal" aria-hidden="true">Cancel</button>            
+        </div>
+    }
+</body>
+</html>

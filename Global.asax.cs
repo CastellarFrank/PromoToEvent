@@ -24,6 +24,10 @@ namespace PromoToEvents
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             InitializeDataBase.Init();
+
+            var httpConfig = GlobalConfiguration.Configuration;
+            httpConfig.Formatters.Remove(httpConfig.Formatters.XmlFormatter);
+
         }
     }
 }

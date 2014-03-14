@@ -1,0 +1,79 @@
+﻿@model PromoToEvents.Models.EditCategoriaModel
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit</title>
+</head>
+<body>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    
+    @using (Html.BeginForm("Edit", "Category", FormMethod.Post, new { id = "Form", enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+    
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="myModalLabel">Edit Category</h3>
+        </div>
+        
+        @Html.HiddenFor(model => model.IdCategoria)
+        
+        <div class="row-fluid">
+            <div class="block-fluid">
+                <div class="row-form">
+                    <div class="span3">
+                        @Html.DisplayNameFor(model => model.Name):
+                    </div>
+                    <div class="span9">
+                        @Html.EditorFor(model => model.Name)
+                        @Html.ValidationMessageFor(model => model.Name)
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row-fluid">
+            <div class="block-fluid">
+                <div class="row-form">
+                    <div class="span3">File:</div>
+                    <div class="span9">                            
+                        <input type="file" name="PictureFile" id="PictureFile"/>
+                        @Html.ValidationMessageFor(model => model.PictureFile)                           
+                    </div>
+                </div>           
+            </div>
+        </div>
+        
+        <div class="row-fluid">
+            <div class="block-fluid">
+                <div class="row-form">
+                    <div class="span3">
+                        @Html.DisplayNameFor(model => model.Active):
+                    </div>
+                    <div class="span9">
+                        @Html.DropDownList("Active")
+                        @Html.ValidationMessageFor(model => model.Active)
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-primary" aria-hidden="true">Update</button> 
+            <button class="btn btn-warning" data-dismiss="modal" aria-hidden="true">Cancel</button>            
+        </div>
+    }
+    
+</body>
+</html>
+

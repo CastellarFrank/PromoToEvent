@@ -35,9 +35,9 @@ namespace PromoToEvents
         public int idEstado { get; set; }
         public int raizVal { get; set; }
     
+        public virtual Ciudad Ciudad { get; set; }
         public virtual Estado Estado { get; set; }
         public virtual Pais Pais { get; set; }
         public virtual ICollection<Evento> Evento { get; set; }
-        public virtual Ciudad Ciudad { get; set; }
     }
 }
